@@ -3,7 +3,9 @@ project(Steinkraft)
 
 set(CMAKE_CXX_STANDARD 17)
 
+if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MDd")
+endif()
 
 set(CMAKE_MODULE_PATH "/usr/share/cmake_modules/cmake/Modules")
 
@@ -24,7 +26,9 @@ set_target_properties(Steinkraft PROPERTIES
 )
 target_link_libraries(Steinkraft
   PRIVATE
-    ${Poco_LIBRARIES} ${SDL_LIBRARIES} ${SDL_MIXER_LIBRARIES}
+    ${Poco_LIBRARIES}
+    ${SDL_LIBRARIES}
+    ${SDL_MIXER_LIBRARIES}
     ${GLEW_LIBRARIES}
     opengl32
     glu32
