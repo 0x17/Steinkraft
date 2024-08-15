@@ -5,10 +5,12 @@
 
 #include "Desktop.hpp"
 
-#include <Poco/File.h>
+/*#include <Poco/File.h>
 #include <Poco/FileStream.h>
 #include <Poco/InflatingStream.h>
-#include <Poco/DeflatingStream.h>
+#include <Poco/DeflatingStream.h>*/
+
+#include <filesystem>
 
 #include <cstring>
 #include <fstream>
@@ -227,31 +229,39 @@ void SDL_StopSound(int sndId) {
 }
 
 void SDL_BinaryWrite(const char *filename, const void *data, size_t size, bool append) {
-	char filenameWithSuffix[1024];
+	/*char filenameWithSuffix[1024];
 	sprintf(filenameWithSuffix, "%s.gz", filename);
 	Poco::FileOutputStream outStream(std::string(filenameWithSuffix), std::ios::binary);
 	Poco::DeflatingOutputStream compressStream(outStream, Poco::DeflatingStreamBuf::STREAM_GZIP);
 	compressStream.write((const char *)data, size);
 	compressStream.close();
-	outStream.close();
+	outStream.close();*/
+	auto flags {std::ios::binary};
+	if(append) flags |= std::ios::app;
+	std::ofstream ofs{filename, flags};
+	ofs.write((const char *)data, size);
 }
 
 void SDL_BinaryRead(const char *filename, void *data, size_t size) {
-	char filenameWithSuffix[1024];
+	/*char filenameWithSuffix[1024];
 	sprintf(filenameWithSuffix, "%s.gz", filename);
 	Poco::FileInputStream inStream(std::string(filenameWithSuffix), std::ios::binary);
 	Poco::InflatingInputStream decompressedStream(inStream, Poco::InflatingStreamBuf::STREAM_GZIP);
 	decompressedStream.read((char *)data, size);
-	inStream.close();
+	inStream.close();*/
+	std::ifstream ifs{filename, std::ios::binary};
+	ifs.read((char *)data, size);
 }
 
 bool SDL_FileExists(const char *filename) {
-	return Poco::File(std::string(filename) + ".gz").exists();
+	//return Poco::File(std::string(filename) + ".gz").exists();
+	return std::filesystem::exists(filename);
 }
 
 void SDL_DeleteFile(const char *filename) {
-	Poco::File f(std::string(filename) + ".gz");
-	f.remove();
+	/*Poco::File f(std::string(filename) + ".gz");
+	f.remove();*/
+	std::filesystem::remove(filename);
 }
 	
 void SDL_ToggleTexture(int texMapIndex) {

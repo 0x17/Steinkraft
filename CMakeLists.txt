@@ -9,7 +9,6 @@ endif()
 
 set(CMAKE_MODULE_PATH "/usr/share/cmake_modules/cmake/Modules")
 
-find_package(Poco REQUIRED Foundation Zip Net)
 find_package(SDL REQUIRED)
 find_package(SDL_mixer REQUIRED)
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
@@ -28,7 +27,6 @@ set_target_properties(Steinkraft PROPERTIES
 )
 target_link_libraries(Steinkraft
   PRIVATE
-    ${Poco_LIBRARIES}
     ${SDL_LIBRARIES}
     ${SDL_MIXER_LIBRARIES}
     ${GLEW_LIBRARIES}
@@ -36,5 +34,5 @@ target_link_libraries(Steinkraft
     glu32
 )
 else()
-target_link_libraries(Steinkraft ${Poco_LIBRARIES} ${SDL_LIBRARIES} -lm -lGL -lGLU -lGLEW -lSDL -lSDL_mixer)
+target_link_libraries(Steinkraft ${SDL_LIBRARIES} -lm -lGL -lGLU -lGLEW -lSDL -lSDL_mixer)
 endif()
