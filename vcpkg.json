@@ -1,0 +1,8 @@
+{
+  "dependencies": [
+    "glew",
+    "poco",
+	"sdl1",
+	"sdl1-mixer"
+  ]
+}
