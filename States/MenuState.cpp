@@ -522,7 +522,7 @@ void MenuState::processNoTouch() {
 	touchWasReleased = true;
 }
 
-inline void MenuState::addConnectToSvMsg(const char *norStr) const
+inline void MenuState::addConnectToSvMsg(const char *norStr)
 {
 	char ipStr[BUF_LEN], localIPStr[BUF_LEN] = {};
 #if !NO_NET
