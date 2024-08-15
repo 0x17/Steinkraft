@@ -12,7 +12,9 @@ set(CMAKE_MODULE_PATH "/usr/share/cmake_modules/cmake/Modules")
 find_package(Poco REQUIRED Foundation Zip Net)
 find_package(SDL REQUIRED)
 find_package(SDL_mixer REQUIRED)
+if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
 find_package(glew REQUIRED)
+endif()
 
 include_directories(".")
 
