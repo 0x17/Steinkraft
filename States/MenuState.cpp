@@ -7,6 +7,7 @@
 #include <ctime>
 
 #include <map>
+#include <array>
 
 #include "../Framework/Utilities.hpp"
 #include "../Framework/SpriteBatch.hpp"
@@ -20,6 +21,8 @@
 #include "LandscapeScene.hpp"
 
 #include "../RandomTexts.hpp"
+
+using namespace std::literals::string_literals;
 
 namespace as {
 
@@ -524,7 +527,7 @@ inline void MenuState::addConnectToSvMsg(const char *norStr) {
 #if !NO_NET
 	NetManager::strToLocalIP(localIPStr);
 #endif
-	std::sprintf(ipStr, "Connect client to %s", localIPStr);
+	strcpy(ipStr, ("Connect client to "s + localIPStr).c_str());
 	sb->addText(0, 0, asServer ? ipStr : norStr, 1, true);
 }
 
@@ -792,24 +795,14 @@ void MenuState::processLoadWorldScreen(std::string &action) {
 
 		constructWorldFilename();
 		deleteFile(worldFilename);
-		char otherFn[BUF_LEN];
-		std::sprintf(otherFn, "%s.spawnpos", worldFilename);
-		if (fileExists(otherFn))
-			deleteFile(otherFn);
 
-		std::sprintf(otherFn, "%s.entities", worldFilename);
-		if (fileExists(otherFn))
-			deleteFile(otherFn);
-		std::sprintf(otherFn, "%s.edescr", worldFilename);
-		if (fileExists(otherFn))
-			deleteFile(otherFn);
-			
-		std::sprintf(otherFn, "%s.animals", worldFilename);
-		if (fileExists(otherFn))
-			deleteFile(otherFn);
-		std::sprintf(otherFn, "%s.adescr", worldFilename);
-		if (fileExists(otherFn))
-			deleteFile(otherFn);
+		const std::array suffices {
+			".spawnpos"s, ".entities"s, ".edescr"s, ".animals"s, ".adescr"s
+		};
+		for(const std::string &suffix : suffices) {
+			if(fileExists(suffix.c_str()))
+				deleteFile(suffix.c_str());
+		}
 
 		if (determineNumWorlds() == 0) {
 			initMainScreen();
