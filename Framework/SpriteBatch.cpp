@@ -2,8 +2,7 @@
 
 #include <iostream>
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "SpriteBatch.hpp"
 #include "Utilities.hpp"
@@ -123,7 +122,7 @@ void SpriteCache::render() {
 FontSpriteCache::FontSpriteCache(bool isStatic) : SpriteCache(isStatic) {}
 
 void FontSpriteCache::addText(int x, int y, const char *str, float scale, bool centered) {
-	ulong l = strlen(str);
+	ulong l = static_cast<ulong>(strlen(str));
 	char c;
 	int xnum, ynum;
 	float u, v;

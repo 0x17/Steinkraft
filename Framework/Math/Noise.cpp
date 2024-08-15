@@ -1,7 +1,6 @@
 // Noise.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "Noise.hpp"
 

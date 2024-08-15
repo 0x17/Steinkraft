@@ -1,7 +1,6 @@
 // Vec3.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include <cmath>
 #include <cstring>

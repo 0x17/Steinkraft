@@ -1,7 +1,6 @@
 // State.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "State.hpp"
 

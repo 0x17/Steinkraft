@@ -1,7 +1,6 @@
 // VertexBuffer.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "VertexBuffer.hpp"
 #include "Utilities.hpp"

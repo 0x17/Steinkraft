@@ -1,7 +1,6 @@
 // HudRenderer.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include <cstdio>
 #include <cmath>

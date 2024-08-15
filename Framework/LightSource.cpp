@@ -1,7 +1,6 @@
 // LightSource.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "LightSource.hpp"
 

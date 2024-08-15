@@ -1,7 +1,6 @@
 // LandscapeRenderer.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include <cassert>
 

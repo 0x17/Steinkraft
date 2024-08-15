@@ -1,7 +1,6 @@
 ﻿// Desktop.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "Desktop.hpp"
 

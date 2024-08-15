@@ -1,7 +1,6 @@
 // Frustum.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "../PGL.h"
 #include "../Utilities.hpp"

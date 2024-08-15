@@ -1,7 +1,6 @@
 // Movement.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "Framework/Math/Vector.hpp"
 

@@ -1,7 +1,6 @@
 // Camera.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include <cstring>
 #include <cmath>

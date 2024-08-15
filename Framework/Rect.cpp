@@ -1,7 +1,6 @@
 // Rect.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "Rect.hpp"
 

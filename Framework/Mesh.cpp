@@ -1,7 +1,6 @@
 // Mesh.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "Mesh.hpp"
 #include "Utilities.hpp"

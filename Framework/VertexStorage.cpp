@@ -1,7 +1,6 @@
 // VertexStorage.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "VertexStorage.hpp"
 

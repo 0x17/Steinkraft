@@ -6,8 +6,7 @@
  Contains Android NDK specific glue code.
 */
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #if ANDROID
 

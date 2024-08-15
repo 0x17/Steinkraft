@@ -1,7 +1,6 @@
 ﻿// EntityBatch.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "EntityBatch.hpp"
 #include "CubeVertices.hpp"

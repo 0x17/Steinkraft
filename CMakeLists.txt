@@ -22,6 +22,7 @@ file(GLOB SOURCE_FILES *.cpp *.c */*.cpp */*/*.cpp)
 # main executable
 add_executable(Steinkraft ${SOURCE_FILES})
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
+target_include_directories(Steinkraft PRIVATE ${SDL_INCLUDE_DIRS}/..)
 set_target_properties(Steinkraft PROPERTIES
   LINK_FLAGS "/NODEFAULTLIB:msvcrt.lib"
 )

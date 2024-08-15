@@ -1,7 +1,6 @@
 // MenuState.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include <cstdlib>
 #include <cmath>

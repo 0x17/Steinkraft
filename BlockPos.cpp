@@ -1,7 +1,6 @@
 ﻿// BlockPos.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "BlockPos.hpp"
 #include "Terrain.hpp"

@@ -1,7 +1,6 @@
 // Terrain.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include <cstdlib>
 #include <cstdio>
@@ -24,7 +23,7 @@ namespace as {
 const char *DEF_FILENAME = "terrain.dump";
 
 inline float LDIST(BlockPos pos, float x, float y, float z) {
-	return (Vec3(pos.x + 0.5f, pos.y, pos.z + 0.5f) - Vec3(x, y, z)).length();
+	return (Vec3((float)pos.x + 0.5f, (float)pos.y, (float)pos.z + 0.5f) - Vec3(x, y, z)).length();
 }
 
 //===========================================================================

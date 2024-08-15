@@ -1,7 +1,6 @@
 // Intersector.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include <cfloat>
 

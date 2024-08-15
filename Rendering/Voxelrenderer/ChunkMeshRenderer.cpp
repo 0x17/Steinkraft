@@ -1,7 +1,6 @@
 // WorldMeshRenderer.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include <cassert>
 

@@ -1,7 +1,6 @@
 // TNTManager.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include <cstdlib>
 #include "TNTManager.hpp"

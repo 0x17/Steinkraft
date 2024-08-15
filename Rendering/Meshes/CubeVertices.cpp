@@ -1,7 +1,6 @@
 // CubeVertices.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "CubeVertices.hpp"
 #include "../../Constants.h"

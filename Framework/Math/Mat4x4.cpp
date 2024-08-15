@@ -1,7 +1,6 @@
 // Mat4x4.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include <cstring>
 #include <cstdio>

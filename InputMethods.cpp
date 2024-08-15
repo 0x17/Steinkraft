@@ -1,7 +1,6 @@
 // InputMethods.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "Framework/Camera.hpp"
 #include "Rendering/HudRenderer.hpp"

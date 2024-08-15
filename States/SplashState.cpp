@@ -1,7 +1,6 @@
 // SplashState.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "../Framework/Utilities.hpp"
 #include "../Framework/SpriteBatch.hpp"

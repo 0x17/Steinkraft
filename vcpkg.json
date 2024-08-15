@@ -1,8 +1,7 @@
 {
   "dependencies": [
     "glew",
-    "poco",
-	"sdl1",
-	"sdl1-mixer"
+	  "sdl1",
+	  "sdl1-mixer"
   ]
 }

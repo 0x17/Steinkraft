@@ -1,7 +1,6 @@
 // Main.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "Framework/Platforms/Desktop.hpp"
 #include "Framework/Texture.hpp"

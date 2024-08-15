@@ -1,7 +1,6 @@
 // Utilities.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include <cmath>
 #include <cassert>

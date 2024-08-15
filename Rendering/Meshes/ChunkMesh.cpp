@@ -1,7 +1,6 @@
 // ChunkMesh.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "../../Framework/Utilities.hpp"
 

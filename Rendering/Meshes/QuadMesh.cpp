@@ -1,7 +1,6 @@
 // QuadMesh.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "../../Constants.h"
 #include "QuadMesh.hpp"

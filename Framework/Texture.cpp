@@ -1,7 +1,6 @@
 // Texture.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include <cstdio>
 #include <cstring>

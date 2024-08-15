@@ -1,7 +1,6 @@
 ﻿// RailManager.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include <iostream>
 #include <string>
@@ -362,46 +361,46 @@ void RailManager::moveCommon( float factor, float delta )
 			switch(prevTurn) {
 			case RT_NX_TO_NZ:				
 				if(prevRailType == RT_XDIR) {
-					targetPos.x = (int)cart.pos.x;
+					targetPos.x = std::truncf(cart.pos.x);
 					targetPos.z = cart.pos.z-1;
 					targetZfactor = -1.0f;
 				} else {				
 					targetPos.x = cart.pos.x+1;
-					targetPos.z = (int)cart.pos.z;
+					targetPos.z = std::truncf(cart.pos.z);
 					targetXfactor = 1.0f;
 				}
 				break;
 			case RT_NX_TO_PZ:
 				if(prevRailType == RT_XDIR) {
-					targetPos.x = (int)cart.pos.x;
+					targetPos.x = std::truncf(cart.pos.x);
 					targetPos.z = cart.pos.z+1;
 					targetZfactor = 1.0f;
 				} else {
 					targetPos.x = cart.pos.x+1;
-					targetPos.z = (int)cart.pos.z;
+					targetPos.z = std::truncf(cart.pos.z);
 					targetXfactor = 1.0f;
 				}
 				break;
 			case RT_PX_TO_NZ:
 				if(prevRailType == RT_XDIR) {
-					targetPos.x = (int)cart.pos.x;
+					targetPos.x = std::truncf(cart.pos.x);
 					targetPos.z = cart.pos.z-1;
 					targetZfactor = -1.0f;
 
 				} else {
 					targetPos.x = cart.pos.x-1;
-					targetPos.z = (int)cart.pos.z;
+					targetPos.z = std::truncf(cart.pos.z);
 					targetXfactor = -1.0f;
 				}
 				break;
 			case RT_PX_TO_PZ:
 				if(prevRailType == RT_XDIR) {
-					targetPos.x = (int)cart.pos.x;
+					targetPos.x = std::truncf(cart.pos.x);
 					targetPos.z = cart.pos.z+1;
 					targetZfactor = 1.0f;
 				} else {
 					targetPos.x = cart.pos.x-1;
-					targetPos.z = (int)cart.pos.z;
+					targetPos.z = std::truncf(cart.pos.z);
 					targetXfactor = -1.0f;
 				}
 				break;

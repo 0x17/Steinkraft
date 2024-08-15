@@ -1,7 +1,6 @@
 ﻿// IndexedMesh.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "PGL.h"
 #include "IndexedMesh.hpp"

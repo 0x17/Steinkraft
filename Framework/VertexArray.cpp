@@ -1,7 +1,6 @@
 // VertexArray.cpp
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include "VertexArray.hpp"
 #include "Utilities.hpp"

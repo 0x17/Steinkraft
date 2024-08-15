@@ -2,8 +2,7 @@
 
 // TODO: Make sure pigs/animals can't fall from map borders (<0,>MAP_X, ..., <0,>MAP_Z)!
 
-#include "StdAfx.h"
-#pragma hdrstop
+
 
 #include <cstdlib>
 #include <ctime>
