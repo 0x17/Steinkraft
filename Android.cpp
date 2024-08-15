@@ -44,7 +44,7 @@
 // Constants/Macros
 //===========================================================================
 #ifndef LOG_TAG
-#define  LOG_TAG    "libpetravis"
+#define  LOG_TAG    "libsteinkraft"
 #endif
 #ifndef LOGI
 #define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
@@ -301,15 +301,15 @@ void destroyStuff(int onlyPersist) {
 
 #ifndef LITE // for full version
 extern "C" {
-	JNIEXPORT void JNICALL Java_com_andredotcom_petravis_SteinkraftLib_init(JNIEnv * env, jobject obj,  jint width, jint height, jstring path, jint lang);
-	JNIEXPORT void JNICALL Java_com_andredotcom_petravis_SteinkraftLib_step(JNIEnv * env, jobject obj);
-	JNIEXPORT void JNICALL Java_com_andredotcom_petravis_SteinkraftLib_shutdown(JNIEnv * env, jobject obj, jint onlyPersist);
-	JNIEXPORT void JNICALL Java_com_andredotcom_petravis_SteinkraftLib_touch(JNIEnv * env, jobject obj, jint x1, jint y1, jint x2, jint y2, jint x3, jint y3, jint x4, jint y4);
-	JNIEXPORT int JNICALL Java_com_andredotcom_petravis_SteinkraftLib_pollSound(JNIEnv * env, jobject obj);
-	JNIEXPORT int JNICALL Java_com_andredotcom_petravis_SteinkraftLib_pollTextureToggle(JNIEnv * env, jobject obj);
+	JNIEXPORT void JNICALL Java_com_andredotcom_steinkraft_SteinkraftLib_init(JNIEnv * env, jobject obj,  jint width, jint height, jstring path, jint lang);
+	JNIEXPORT void JNICALL Java_com_andredotcom_steinkraft_SteinkraftLib_step(JNIEnv * env, jobject obj);
+	JNIEXPORT void JNICALL Java_com_andredotcom_steinkraft_SteinkraftLib_shutdown(JNIEnv * env, jobject obj, jint onlyPersist);
+	JNIEXPORT void JNICALL Java_com_andredotcom_steinkraft_SteinkraftLib_touch(JNIEnv * env, jobject obj, jint x1, jint y1, jint x2, jint y2, jint x3, jint y3, jint x4, jint y4);
+	JNIEXPORT int JNICALL Java_com_andredotcom_steinkraft_SteinkraftLib_pollSound(JNIEnv * env, jobject obj);
+	JNIEXPORT int JNICALL Java_com_andredotcom_steinkraft_SteinkraftLib_pollTextureToggle(JNIEnv * env, jobject obj);
 };
 
-JNIEXPORT void JNICALL Java_com_andredotcom_petravis_SteinkraftLib_init(JNIEnv * env, jobject obj,  jint width, jint height, jstring path, jint lang) {
+JNIEXPORT void JNICALL Java_com_andredotcom_steinkraft_SteinkraftLib_init(JNIEnv * env, jobject obj,  jint width, jint height, jstring path, jint lang) {
 	const char *str = env->GetStringUTFChars(path, 0);
 	strcpy(extPath, str);
 	strcat(extPath, "/" BASE_CAPTION "/");
@@ -321,39 +321,39 @@ JNIEXPORT void JNICALL Java_com_andredotcom_petravis_SteinkraftLib_init(JNIEnv *
 	setupGraphics(width, height);
 }
 
-JNIEXPORT void JNICALL Java_com_andredotcom_petravis_SteinkraftLib_step(JNIEnv * env, jobject obj) {
+JNIEXPORT void JNICALL Java_com_andredotcom_steinkraft_SteinkraftLib_step(JNIEnv * env, jobject obj) {
 	renderFrame();
 }
 
-JNIEXPORT void JNICALL Java_com_andredotcom_petravis_SteinkraftLib_shutdown(JNIEnv * env, jobject obj, jint onlyPersist) {
+JNIEXPORT void JNICALL Java_com_andredotcom_steinkraft_SteinkraftLib_shutdown(JNIEnv * env, jobject obj, jint onlyPersist) {
 	destroyStuff(onlyPersist);
 }
 
-JNIEXPORT void JNICALL Java_com_andredotcom_petravis_SteinkraftLib_touch(JNIEnv * env, jobject obj, jint x1, jint y1, jint x2, jint y2, jint x3, jint y3, jint x4, jint y4) {
+JNIEXPORT void JNICALL Java_com_andredotcom_steinkraft_SteinkraftLib_touch(JNIEnv * env, jobject obj, jint x1, jint y1, jint x2, jint y2, jint x3, jint y3, jint x4, jint y4) {
 	processTouch(x1, y1, x2, y2, x3, y3, x4, y4);
 }
 
-JNIEXPORT int JNICALL Java_com_andredotcom_petravis_SteinkraftLib_pollSound(JNIEnv * env, jobject obj) {
+JNIEXPORT int JNICALL Java_com_andredotcom_steinkraft_SteinkraftLib_pollSound(JNIEnv * env, jobject obj) {
 	return pollSound();
 }
 
-JNIEXPORT int JNICALL Java_com_andredotcom_petravis_SteinkraftLib_pollTextureToggle(JNIEnv * env, jobject obj) {
+JNIEXPORT int JNICALL Java_com_andredotcom_steinkraft_SteinkraftLib_pollTextureToggle(JNIEnv * env, jobject obj) {
 	return pollTextureToggle();
 }
 
 #else // for LITE version
 
 extern "C" {
-	JNIEXPORT void JNICALL Java_com_andredotcom_petravislite_SteinkraftLib_init(JNIEnv * env, jobject obj,  jint width, jint height, jstring path, jint lang);
-	JNIEXPORT void JNICALL Java_com_andredotcom_petravislite_SteinkraftLib_step(JNIEnv * env, jobject obj);
-	JNIEXPORT void JNICALL Java_com_andredotcom_petravislite_SteinkraftLib_shutdown(JNIEnv * env, jobject obj, jint onlyPersist);
-	JNIEXPORT void JNICALL Java_com_andredotcom_petravislite_SteinkraftLib_touch(JNIEnv * env, jobject obj, jint x1, jint y1, jint x2, jint y2, jint x3, jint y3, jint x4, jint y4);
-	JNIEXPORT int  JNICALL Java_com_andredotcom_petravislite_SteinkraftLib_pollSound(JNIEnv * env, jobject obj);
-	JNIEXPORT int  JNICALL Java_com_andredotcom_petravislite_SteinkraftLib_pollBuyIntent(JNIEnv * env, jobject obj);
-	JNIEXPORT int  JNICALL Java_com_andredotcom_petravislite_SteinkraftLib_pollTextureToggle(JNIEnv * env, jobject obj);
+	JNIEXPORT void JNICALL Java_com_andredotcom_steinkraftlite_SteinkraftLib_init(JNIEnv * env, jobject obj,  jint width, jint height, jstring path, jint lang);
+	JNIEXPORT void JNICALL Java_com_andredotcom_steinkraftlite_SteinkraftLib_step(JNIEnv * env, jobject obj);
+	JNIEXPORT void JNICALL Java_com_andredotcom_steinkraftlite_SteinkraftLib_shutdown(JNIEnv * env, jobject obj, jint onlyPersist);
+	JNIEXPORT void JNICALL Java_com_andredotcom_steinkraftlite_SteinkraftLib_touch(JNIEnv * env, jobject obj, jint x1, jint y1, jint x2, jint y2, jint x3, jint y3, jint x4, jint y4);
+	JNIEXPORT int  JNICALL Java_com_andredotcom_steinkraftlite_SteinkraftLib_pollSound(JNIEnv * env, jobject obj);
+	JNIEXPORT int  JNICALL Java_com_andredotcom_steinkraftlite_SteinkraftLib_pollBuyIntent(JNIEnv * env, jobject obj);
+	JNIEXPORT int  JNICALL Java_com_andredotcom_steinkraftlite_SteinkraftLib_pollTextureToggle(JNIEnv * env, jobject obj);
 };
 
-JNIEXPORT void JNICALL Java_com_andredotcom_petravislite_SteinkraftLib_init(JNIEnv * env, jobject obj,  jint width, jint height, jstring path, jint lang) {
+JNIEXPORT void JNICALL Java_com_andredotcom_steinkraftlite_SteinkraftLib_init(JNIEnv * env, jobject obj,  jint width, jint height, jstring path, jint lang) {
 	const char *str = env->GetStringUTFChars(path, 0);
 	strcpy(extPath, str);
 	strcat(extPath, "/" BASE_CAPTION "/");
@@ -365,27 +365,27 @@ JNIEXPORT void JNICALL Java_com_andredotcom_petravislite_SteinkraftLib_init(JNIE
 	setupGraphics(width, height);
 }
 
-JNIEXPORT void JNICALL Java_com_andredotcom_petravislite_SteinkraftLib_step(JNIEnv * env, jobject obj) {
+JNIEXPORT void JNICALL Java_com_andredotcom_steinkraftlite_SteinkraftLib_step(JNIEnv * env, jobject obj) {
 	renderFrame();
 }
 
-JNIEXPORT void JNICALL Java_com_andredotcom_petravislite_SteinkraftLib_shutdown(JNIEnv * env, jobject obj, jint onlyPersist) {
+JNIEXPORT void JNICALL Java_com_andredotcom_steinkraftlite_SteinkraftLib_shutdown(JNIEnv * env, jobject obj, jint onlyPersist) {
 	destroyStuff(onlyPersist);
 }
 
-JNIEXPORT void JNICALL Java_com_andredotcom_petravislite_SteinkraftLib_touch(JNIEnv * env, jobject obj, jint x1, jint y1, jint x2, jint y2, jint x3, jint y3, jint x4, jint y4) {
+JNIEXPORT void JNICALL Java_com_andredotcom_steinkraftlite_SteinkraftLib_touch(JNIEnv * env, jobject obj, jint x1, jint y1, jint x2, jint y2, jint x3, jint y3, jint x4, jint y4) {
 	processTouch(x1, y1, x2, y2, x3, y3, x4, y4);
 }
 
-JNIEXPORT int JNICALL Java_com_andredotcom_petravislite_SteinkraftLib_pollSound(JNIEnv * env, jobject obj) {
+JNIEXPORT int JNICALL Java_com_andredotcom_steinkraftlite_SteinkraftLib_pollSound(JNIEnv * env, jobject obj) {
 	return pollSound();
 }
 
-JNIEXPORT int JNICALL Java_com_andredotcom_petravislite_SteinkraftLib_pollBuyIntent(JNIEnv * env, jobject obj) {
+JNIEXPORT int JNICALL Java_com_andredotcom_steinkraftlite_SteinkraftLib_pollBuyIntent(JNIEnv * env, jobject obj) {
 	return (as::buyIntent == true) ? 1 : 0;
 }
 
-JNIEXPORT int JNICALL Java_com_andredotcom_petravislite_SteinkraftLib_pollTextureToggle(JNIEnv * env, jobject obj) {
+JNIEXPORT int JNICALL Java_com_andredotcom_steinkraftlite_SteinkraftLib_pollTextureToggle(JNIEnv * env, jobject obj) {
 	return pollTextureToggle();
 }
 

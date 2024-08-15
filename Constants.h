@@ -16,7 +16,7 @@
 #define VERSION_STR "07"
 #define COMPILE_INFO "BUILD: date(" __DATE__ ") time(" __TIME__ ")"
 
-#define BASE_CAPTION "PetraVis"
+#define BASE_CAPTION "Steinkraft"
 #define AUTHOR_NAME "Andre Schnabel"
 
 namespace as {
