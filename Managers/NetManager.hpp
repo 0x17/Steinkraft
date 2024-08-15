@@ -3,6 +3,8 @@
 #ifndef NETMANAGER_HPP
 #define NETMANAGER_HPP
 
+extern char remoteIPStr[BUF_LEN];
+
 #if !NO_NET
 
 #include <Poco/Net/DatagramSocket.h>
@@ -24,7 +26,6 @@ namespace as {
 //===========================================================================
 // Globals
 //===========================================================================
-extern char remoteIPStr[BUF_LEN];
 
 //===========================================================================
 // Types

@@ -91,8 +91,8 @@ inline T SIGN(T x) { return (x > 0) ? 1 : -1; }
 #define SAFE_DELETE(p) if(p) { delete p; p=NULL; }
 #define SAFE_DELETE_ARRAY(p) if(p) { delete [] p; p=NULL; }
 
-const int BUF_LEN = 512;
-const int LBUF_LEN = 1024;
+constexpr int BUF_LEN = 512;
+constexpr int LBUF_LEN = 1024;
 
 #if SDL && !MOBILE_TEST
 	inline void startMouseMode() {

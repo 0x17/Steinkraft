@@ -7,9 +7,14 @@
       "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-		"CMAKE_C_COMPILER": "cl.exe",
+        "CMAKE_C_COMPILER": "cl.exe",
         "CMAKE_CXX_COMPILER": "cl.exe"
       }
+    },
+    {
+        "name": "linux",
+        "generator": "Ninja",
+        "binaryDir": "${sourceDir}/build"
     }
   ]
 }

@@ -522,7 +522,9 @@ void MenuState::processNoTouch() {
 
 inline void MenuState::addConnectToSvMsg(const char *norStr) {
 	char ipStr[BUF_LEN], localIPStr[BUF_LEN];
+#if !NO_NET
 	NetManager::strToLocalIP(localIPStr);
+#endif
 	std::sprintf(ipStr, "Connect client to %s", localIPStr);
 	sb->addText(0, 0, asServer ? ipStr : norStr, 1, true);
 }

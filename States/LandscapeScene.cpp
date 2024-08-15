@@ -107,12 +107,13 @@ LandscapeScene::LandscapeScene(int seed, StateManager *_g, Terrain::TerrainSourc
 }
 
 LandscapeScene::~LandscapeScene() {
+#if !NO_NET
 	if (!netManager || netManager->shouldSave())
 		saveWorld();
+	SAFE_DELETE(netManager);
+#endif
 
 	SAFE_DELETE(im);
-
-	SAFE_DELETE(netManager);
 
 	SAFE_DELETE(animalManager);
 	SAFE_DELETE(tntManager);
@@ -125,8 +126,10 @@ LandscapeScene::~LandscapeScene() {
 }
 
 void LandscapeScene::persist() {
+#if !NO_NET
 	if(!netManager || netManager->shouldSave())
 		saveWorld();
+#endif
 }
 
 void LandscapeScene::commonInit(int seed, const char *filename, Terrain::TerrainSource tsource, bool mp, bool server) {
@@ -160,7 +163,9 @@ void LandscapeScene::commonInit(int seed, const char *filename, Terrain::Terrain
 		}
 	}
 
+#if !NO_NET
 	if (mp) { netManager = new NetManager(server, terrain, &cam); }
+#endif
 
 	animalManager = new AnimalManager(&cam, terrain);
 	if(filename) {
@@ -412,10 +417,12 @@ void LandscapeScene::processNoTouch() {
 void LandscapeScene::draw(ticks_t delta) {
 	static int sx2, sy2;
 
+#if !NO_NET
 	if (netManager && netManager->sync()) {
 		g->setState(new MenuState(g, true));
 		return;
 	}
+#endif
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	cam.updateView();
@@ -465,10 +472,12 @@ void LandscapeScene::draw(ticks_t delta) {
 
 	railManager->renderCart();
 
+#if !NO_NET
 	if (netManager) {
 		Vec3 *otherPos = netManager->getOtherPosPtr();
 		animalManager->renderPigAtPos(otherPos->x, otherPos->y, otherPos->z, netManager->getOtherYaw());
 	}
+#endif
 
 	// FIXME: Isn't calling ortho end here unneccesary?
 	hudRenderer->render(digMode, texSelOverlayActive);
@@ -572,9 +581,11 @@ void LandscapeScene::putNewBlock( bool &selDoor, BlockPos * selectedBlock, int a
 
 					terrain->removeEntityAt(selectedBlock->x, selectedBlock->y, selectedBlock->z);
 
+#if !NO_NET
 					if(netManager) {
 						netManager->sendEntityDeletion(selectedBlock->x, selectedBlock->y, selectedBlock->z);
 					}
+#endif
 				}
 				isDoor = true;
 			}
@@ -613,8 +624,10 @@ void LandscapeScene::putNewBlock( bool &selDoor, BlockPos * selectedBlock, int a
 			if (!terrain->addEntity(Entity(ex, ey, ez, etype, selectedFace)))
 				return;
 			else {
+				#if !NO_NET
 				if(netManager)
 					netManager->sendEntity(Entity(ex, ey, ez, etype, selectedFace));
+				#endif
 			}
 
 			if (selDoor) return;
@@ -624,15 +637,19 @@ void LandscapeScene::putNewBlock( bool &selDoor, BlockPos * selectedBlock, int a
 				terrain->set(actualX, actualY + 1, actualZ, Terrain::INVIS_DOOR);
 
 				if(netManager) {
+					#if !NO_NET
 					netManager->sendSet(actualX, actualY, actualZ, Terrain::INVIS_DOOR);
 					netManager->sendSet(actualX, actualY+1, actualZ, Terrain::INVIS_DOOR);
+					#endif
 				}
 
 			} else if (isStandingEntity(etype, isDoor, selDoor, selectedFace)) {
 				terrain->set(actualX, actualY, actualZ, Terrain::INVIS_SOLID);
 
 				if(netManager) {
+					#if !NO_NET
 					netManager->sendSet(actualX, actualY, actualZ, Terrain::INVIS_DOOR);
+					#endif
 				}
 			}
 		}
@@ -664,8 +681,10 @@ void LandscapeScene::putNewBlock( bool &selDoor, BlockPos * selectedBlock, int a
 
 			terrain->set(actualX, actualY, actualZ, selectedTexture + 1);
 
+#if !NO_NET
 			if(netManager)
 				netManager->sendSet(actualX, actualY, actualZ, selectedTexture+1);
+#endif
 		}
 
 		hudRenderer->startPutAnim();
@@ -699,10 +718,12 @@ void LandscapeScene::digExistingBlock( BlockPos * selectedBlock, CubeFace select
 			landscapeRenderer->addExplAt(sbx, sby + yoff, sbz, val, blockBelowY);
 			terrain->set(sbx, sby + yoff, sbz, 0);
 
+#if !NO_NET
 			if(netManager) {
 				netManager->sendEntityDeletion(sbx, sby+yoff, sbz);
 				netManager->sendSet(sbx, sby + yoff, sbz, 0);
 			}
+#endif
 
 			digEntireBlock = true;
 
@@ -720,10 +741,12 @@ void LandscapeScene::digExistingBlock( BlockPos * selectedBlock, CubeFace select
 			landscapeRenderer->addExplAt(sbx, sby, sbz, val, blockBelowY);
 			terrain->set(sbx, sby, sbz, 0);
 			// if in multiplayer also send over local dig
+#if !NO_NET
 			if(netManager) {
 				netManager->sendSet(sbx, sby, sbz, 0);
 				netManager->sendEntityDeletion(sbx, sby, sbz);
 			}
+#endif
 		}
 		else {
 			if(terrain->removeEntityAt(sbx, sby, sbz, selectedFace)) {

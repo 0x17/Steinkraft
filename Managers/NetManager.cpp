@@ -3,6 +3,10 @@
 #include "StdAfx.h"
 #pragma hdrstop
 
+#include "../Framework/Utilities.hpp"
+
+char remoteIPStr[BUF_LEN];
+
 #if !NO_NET
 
 #include <sys/types.h>
@@ -148,8 +152,6 @@ void localAddrToStr(char *dest) {
 }
 #endif
 	
-char remoteIPStr[BUF_LEN];
-
 const ticks_t SYNC_DELAY = (int)(1000.0f / 15.0f);
 
 #define NETFAIL(msg, e)	printf("Exception: %s\n%s\n", msg, e.message().c_str()); \

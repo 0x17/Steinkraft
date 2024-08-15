@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 project(Steinkraft)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 set(CMAKE_MODULE_PATH "/usr/share/cmake_modules/cmake/Modules")
 
