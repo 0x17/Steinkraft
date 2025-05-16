@@ -1,4 +1,4 @@
-[Steinkraft](https://steinkraft.net/) is a game that places the player into a world made of unit sized cubes. Cubes can be removed and new cubes can be placed nearby other cubes (block extrusion). New worlds can be generated and are automatically saved. Existing worlds can be loaded.
+[Steinkraft](https://steinkraft.net/) (also known as PetraVis) is a game that places the player into a world made of unit sized cubes. Cubes can be removed and new cubes can be placed nearby other cubes (block extrusion). New worlds can be generated and are automatically saved. Existing worlds can be loaded.
 
 The game was originally developed and published for mobile devices (smartphones, tablets) and got released on the Apple AppStore (iOS) and Google Play (Android). Both games were removed from the stores as I couldn't find the time to update them.
 
